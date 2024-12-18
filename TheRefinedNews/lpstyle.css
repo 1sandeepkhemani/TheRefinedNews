@@ -1,0 +1,542 @@
+﻿
+:root {
+    --aside-text: hsl(236, 13%, 42%);
+    --aside-box: hsl(240, 100%, 5%);
+    --page-color: hsl(36, 100%, 99%);
+    --paragraph-color: hsl(233, 8%, 79%);
+    --aside-header: hsl(35, 77%, 62%);
+    --button-color: hsl(5, 85%, 63%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+html {
+    font-size: 10px;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    font-size: 1.8rem; /* For Responsive Layout*/
+    background-color: var(--page-color);
+}
+
+.container {
+    width: 100%;
+    /* Setting padding and margin across the page */
+    padding: 1.5rem 15rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-rows: 0.1fr 0.7fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "navigation"
+        "main";
+}
+
+.nav_menu_item {
+    font-size: 2.6rem;
+}
+/* for the sidebar */
+.sidebar {
+    display: none;
+    position: fixed;
+    padding: 2rem 2rem;
+    left: 30%;
+    flex-direction: column;
+    justify-content: flex-start;
+    float: right;
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    z-index: 1000;
+}
+
+    .sidebar img {
+        width: 3rem;
+        margin-bottom: 40%;
+        align-self: flex-end;
+    }
+
+    .sidebar ul {
+        height: 23rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+        .sidebar ul > li > a {
+            color: var(--aside-box);
+            font-weight: 500;
+        }
+/* .container * {
+    border: 2px solid red;
+  } */
+/* content - navbar */
+main {
+    grid-area: main;
+    display: grid;
+    grid-template-rows: 0.9fr 0.1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    grid-template-areas:
+        "featured featured aside"
+        "featured featured aside"
+        "article article article";
+}
+
+nav {
+    grid-area: navigation;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* For the sidebar */
+.hamburger {
+    display: none;
+}
+
+ul {
+    width: 40%;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+}
+/* Active States */
+li > a:hover {
+    color: var(--button-color);
+}
+
+p {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+ul > li > a {
+    color: var(--aside-text);
+}
+
+/* For the featured section */
+.featured {
+    grid-area: featured;
+    display: grid;
+    gap: 2rem;
+    grid-template-rows: 1fr 0.8fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "image image"
+        "image-text text";
+}
+
+.featured-img {
+    grid-area: image;
+    width: 100%;
+    height: 100%;
+    /* object-position: 15%; */
+    object-fit: cover;
+}
+
+.featured-text {
+    display: block;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    grid-area: image-text;
+    font-size: 6rem;
+    font-weight: 800;
+    width: 100%;
+    color: black;
+    font-family: Times, "Times New Roman", Georgia, serif;
+    ;
+}
+
+/* For the paragraph text with a button  */
+.cta {
+    grid-area: text;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+    .cta p {
+        color: var(--aside-text);
+        line-height: 3rem;
+        text-align: justify;
+    }
+
+    .cta a {
+        display: inline-block;
+        text-transform: uppercase;
+        color: var(--page-color);
+        width: 20rem;
+        height: 5rem;
+        margin-top: 3.6rem;
+        text-align: center;
+        padding: 1.5rem;
+        letter-spacing: 0.6rem;
+        font-weight: 700;
+        border: none;
+        background-color: var(--button-color);
+    }
+
+        /* Active States */
+        .cta a:hover {
+            background-color: var(--aside-box);
+        }
+
+/* for the side content */
+aside {
+    height: 92%;
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 2.5rem;
+    background-color: var(--aside-box);
+    color: var(--aside-text);
+}
+
+    aside h1 {
+        color: var(--aside-header);
+        font-size: 4rem;
+    }
+
+    aside div:not(:last-child) {
+        border-bottom: 0.1rem solid var(--paragraph-color);
+        padding-bottom: 2rem;
+    }
+
+    aside div h2 {
+        color: var(--page-color);
+    }
+
+        aside div h2:hover {
+            color: var(--aside-header);
+        }
+
+    aside div p {
+        padding: 1rem 1rem 0 0;
+    }
+
+/* for the bottom article preview  */
+.article-container {
+    width: 100%;
+    height: 55%;
+    justify-content: space-between;
+    grid-area: article;
+    display: flex;
+}
+
+    .article-container > div {
+        width: 31%;
+        height: 100%;
+        display: flex;
+    }
+
+.article-text {
+    margin-left: 1rem;
+    height: 100%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+    .article-text h1 {
+        margin-bottom: 1rem;
+        font-size: 4rem;
+        color: var(--paragraph-color);
+    }
+
+    .article-text h3 {
+        margin: 0.5rem 0;
+    }
+
+        .article-text h3:hover {
+            color: var(--button-color);
+        }
+
+    .article-text p {
+        width: 100%;
+        color: var(--aside-text);
+    }
+
+
+
+footer {
+    bottom: 0px;
+    width: 100%;
+    background-color: var(--aside-box);
+    color: #d9d9d9;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-content {
+    display: flex;
+}
+
+    .main-content .box {
+        flex-basis: 50%;
+        padding: 10px 20px;
+    }
+
+.box h2 {
+    font-size: 2.125rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.box .content {
+    margin: 20px 0 0 0;
+    position: relative;
+}
+
+    .box .content:before {
+        position: absolute;
+        content: '';
+        top: -10px;
+        height: 2px;
+        width: 100%;
+        background: white;
+    }
+
+    .box .content:after {
+        position: absolute;
+        content: '';
+        height: 2px;
+        width: 25%;
+        background: var(--aside-header);
+        top: -10px;
+    }
+
+.left .content p {
+    text-align: justify;
+    font-size: 1.8625rem;
+}
+
+.left .content .social {
+    margin: 20px 0 0 0;
+}
+
+    .left .content .social a {
+        padding: 0 2px;
+    }
+
+        .left .content .social a span {
+            height: 40px;
+            width: 40px;
+            background: #1a1a1a;
+            line-height: 40px;
+            text-align: center;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: 0.3s;
+            color: #d9d9d9;
+        }
+
+            .left .content .social a span:hover {
+                background: var(--button-color);
+            }
+
+.center .content .fas {
+    font-size: 1.4375rem;
+    background: #1a1a1a;
+    height: 45px;
+    width: 45px;
+    line-height: 45px;
+    text-align: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+    .center .content .fas:hover {
+        background: var(--button-color);
+    }
+
+.center .content .text {
+    font-size: 2.0625rem;
+    font-weight: 500;
+    padding-left: 10px;
+}
+
+.center .content .phone {
+    margin: 15px 0;
+}
+
+.right  .text {
+    font-size: 2.0625rem;
+    margin-bottom: 2px;
+    color: white;
+}
+
+.right .msg {
+    margin-top: 10px;
+}
+
+.right  #TextBox1, .right  #TextBox2 {
+    width: 100%;
+    font-size: 2.0625rem;
+    background: white;
+    padding-left: 10px;
+    border: 1px solid #222222;
+}
+
+    .right  #TextBox1:focus,
+    .right  #TextBox2:focus {
+        outline-color: #3498db;
+    }
+
+.right #TextBox1 {
+    height: 35px;
+}
+.right  #TextBox2 {
+    height: 40px;
+}
+
+.right .btn {
+    margin-top: 10px;
+}
+
+    .right  .btn #Button1 {
+        height: 40px;
+        width: 100%;
+        border: none;
+        outline: none;
+        background: var(--aside-header);
+        font-size: 3.0625rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: .3s;
+        color: white;
+    }
+
+        .right  .btn #Button1:hover {
+            background: var(--button-color);
+        }
+
+.bottom center {
+    padding: 5px;
+    font-size: 1.3375rem;
+    background: var(--aside-box);
+}
+
+    .bottom center span {
+        color: white;
+    }
+
+
+/* @media screen and (max-width: 768px) {
+    .container {
+      padding: 0rem;
+    }
+  } */
+
+/* Responsiveness for the screen of 375px */
+@media screen and (max-width: 48rem) {
+    nav ul {
+        display: none;
+    }
+    /* Displaying hamburger when the width is less than or equal to 375px or 37.5rem */
+    .hamburger {
+        display: block;
+    }
+
+    .sidebar {
+        font-size: 1.8rem;
+    }
+    /* Container Layout */
+    .container {
+        grid-template-rows: 0.04fr 1fr;
+        padding: 0 1.5rem;
+    }
+    /* Mobile Layout */
+    main {
+        grid-template-rows: 1fr 0.8fr 0.6fr;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "featured"
+            "aside"
+            "article";
+    }
+    /* Increasing font size for the aside content and the (paragraph with the text) */
+    .cta p,
+    aside > div > p {
+        font-size: 2rem;
+    }
+    /* Changing layout on the hero text, paragraph and btn */
+    .featured {
+        grid-template-rows: 0.85fr 0.3fr 0.1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "image"
+            "image-text"
+            "text";
+    }
+    /* .featured-img{
+      height: 80%;
+    } */
+    .featured-text {
+        font-size: 5rem;
+        width: 80%;
+        font-weight: 800;
+    }
+
+    .cta {
+        padding: 0;
+        text-align: justify;
+    }
+
+    aside div:not(:last-child) {
+        border-bottom: 0.1rem solid var(--paragraph-color);
+        padding-bottom: 4rem;
+    }
+
+    .article-container {
+        flex-direction: column;
+    }
+    /* Reducing font size on the mobile layout */
+    .article-text > h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        margin: 0;
+    }
+    /* So that the article will span the width of the device */
+    .article-container > div {
+        width: 100%;
+        height: 28%;
+        margin-top: 4rem;
+    }
+
+    .article-text {
+        margin-left: 2rem;
+    }
+
+        .article-text h3 {
+            font-weight: 700;
+            /* font-size: 1.8rem; */
+            margin: 0;
+        }
+}
+
+@media screen and (max-width: 900px) {
+    footer {
+        position: relative;
+        bottom: 0px;
+    }
+
+    .main-content {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+        .main-content .box {
+            margin: 5px 0;
+        }
+}
